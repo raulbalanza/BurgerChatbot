@@ -1,0 +1,6 @@
+rasa==3.4.0
+spacy==3.4.4
+gtts==2.3.0
+pydub==0.25.1
+speechrecognition==3.9.0
+trino

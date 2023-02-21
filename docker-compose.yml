@@ -1,0 +1,65 @@
+version: '3.9'
+
+services:
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh mongo:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    volumes:
+      - ./mongo/mapped-db:/data/db
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      
+  trino:
+    image: trinodb/trino
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: trino --execute "SELECT ('LISTO') FROM mongodb.rah.burgers" | grep LISTO
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    volumes:
+      - ./trino/mongodb.properties:/etc/trino/catalog/mongodb.properties
+
+  frontend:
+    image: rah-frontend
+    build: ./frontend/
+    depends_on:
+      trino:
+        condition: service_healthy
+    ports:
+      - "8051:8051"
+    volumes:
+      - ./frontend/app:/app 
+
+  rasa-bot-server:
+    image: rasa-bot
+    build: ./rasa-bot/
+    depends_on:
+      trino:
+        condition: service_healthy
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./rasa-bot/credentials.yml:/app/credentials.yml
+  
+  rasa-bot-actions:
+    image: rasa-bot
+    build: ./rasa-bot/
+    depends_on:
+      trino:
+        condition: service_healthy
+    volumes:
+      - ./rasa-bot:/app
+    command: rasa run actions

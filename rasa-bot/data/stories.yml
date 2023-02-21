@@ -1,0 +1,137 @@
+version: "3.1"
+
+stories:
+
+- story: vegana path
+  steps:
+  - intent: recomienda_burger
+  - action: utter_pregunta_vegana
+  - intent: si
+  - action: action_recomienda_crispyvegana
+
+- story: lotus path
+  steps:
+  - intent: recomienda_burger
+  - action: utter_pregunta_vegana
+  - intent: no
+  - action: utter_pregunta_lotus
+  - intent: si
+  - action: action_recomienda_lotus
+
+- story: donuts path
+  steps:
+  - intent: recomienda_burger
+  - action: utter_pregunta_vegana
+  - intent: no
+  - action: utter_pregunta_lotus
+  - intent: no
+  - action: utter_pregunta_dulce
+  - intent: si
+  - action: action_recomienda_donuts_burger
+
+- story: muralla path
+  steps:
+  - intent: recomienda_burger
+  - action: utter_pregunta_vegana
+  - intent: no
+  - action: utter_pregunta_lotus
+  - intent: no
+  - action: utter_pregunta_dulce
+  - intent: no
+  - action: action_recomienda_muralla
+
+- story: interactive_story_1
+  steps:
+  - intent: saludo_y_ayuda
+  - action: utter_saludo_y_ayuda
+  - intent: pedido
+  - action: pedido_form
+  - active_loop: pedido_form
+  - slot_was_set:
+    - requested_slot: burger
+  - intent: decir_burger
+    entities:
+    - burger: baby
+  - action: utter_ask_nombre
+  - intent: decir_nombre
+    entities:
+    - nombre: Juan
+  - slot_was_set:
+    - nombre: Juan
+  - action: action_almacenar_pedido
+  - slot_was_set:
+    - burger: null
+  - slot_was_set:
+    - nombre: null
+  - action: action_restart
+
+- story: interactive_story_2
+  steps:
+  - intent: saludo_y_ayuda
+  - action: utter_saludo_y_ayuda
+  - intent: pedido
+  - action: pedido_form
+  - active_loop: pedido_form
+  - slot_was_set:
+    - requested_slot: burger
+  - slot_was_set:
+    - burger: muralla
+  - slot_was_set:
+    - requested_slot: nombre
+  - slot_was_set:
+    - nombre: Paco
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_almacenar_pedido
+  - slot_was_set:
+    - burger: null
+  - slot_was_set:
+    - nombre: null
+  - action: action_restart
+
+- story: interactive_story_3
+  steps:
+  - intent: pedido
+  - action: pedido_form
+  - active_loop: pedido_form
+  - slot_was_set:
+    - requested_slot: burger
+  - slot_was_set:
+    - burger: crispyvegana
+  - slot_was_set:
+    - requested_slot: nombre
+  - intent: decir_nombre
+    entities:
+    - nombre: Anastasio
+  - action: action_almacenar_pedido
+  - slot_was_set:
+    - burger: null
+  - slot_was_set:
+    - nombre: null
+  - action: action_restart
+
+- story: interactive_story_4
+  steps:
+  - intent: saludo_y_ayuda
+  - action: utter_saludo_y_ayuda
+  - intent: pedido
+  - action: pedido_form
+  - active_loop: pedido_form
+  - slot_was_set:
+    - requested_slot: burger
+  - intent: decir_burger
+    entities:
+    - burger: supreme
+  - slot_was_set:
+    - burger: supreme
+  - action: utter_ask_nombre
+  - intent: decir_nombre
+    entities:
+    - nombre: Josefina
+  - action: action_almacenar_pedido
+  - slot_was_set:
+    - burger: null
+  - slot_was_set:
+    - nombre: null
+  - action: action_restart

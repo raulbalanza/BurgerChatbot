@@ -1,0 +1,217 @@
+version: "3.1"
+nlu:
+- intent: despedida
+  examples: |
+    - muchas gracias
+    - gracias
+    - adios
+    - hasta luego
+    - chao
+    - genial
+- intent: burger_dia
+  examples: |
+    - burger del dia
+    - cual es la hamburguesa del dia
+    - dia
+    - dime la burguer del dia
+    - hamburguesa dia
+- intent: burgers_baratas
+  examples: |
+    - Dime las más baratas
+    - Precios bajos
+    - burgers mas baratas
+    - estoy pobre
+    - ¿cuáles son las hamburguesas más baratas?
+- intent: burgers_caras
+  examples: |
+    - Dime las más caras
+    - burgers mas caras
+    - dime las hamburguesas más exclusivas
+    - hoy he cobrado
+    - precios altos
+    - ¿cuáles son las hamburguesas más caras?
+- intent: decir_burger
+  examples: |
+    - [american burger](burger)
+    - [donuts burger](burger)
+    - [country](burger)
+    - [muralla](burger)
+    - pideme una [supreme](burger)
+    - pideme una [crispyvegana](burger)
+    - pideme una [muralla](burger)
+    - quiero una [lotus](burger)
+    - quiero una [donuts burger](burger)
+    - quiero una [country](burger)
+    - reserva una [pull pork](burger)
+    - una [crispyvegana](burger)
+    - una [baby](burger)
+    - [chickencrispy](burger)
+    - una [supercheese](burger)
+    - quiero una [muralla](burger)
+    - una [supreme](burger)
+    - quiero una [reina](burger)
+    - reserva una [jalapeña](burger)
+    - pideme una [africana](burger)
+    - quiero una [pull pork](burger)
+    - [vegana gourmet](burger)
+    - [crispyvegana](burger)
+    - una [cheesebacon](burger)
+    - pideme una [donuts burger](burger)
+    - pideme una [lotus](burger)
+    - una [heavy](burger)
+    - quiero una [mexican](burger)
+    - reserva una [american burger](burger)
+    - la [baby](burger)
+    - una [muralla](burger)
+    - quiero una [crispyvegana](burger)
+    - quiero la [supreme](burger)
+- intent: decir_nombre
+  examples: |
+    - [Paula](nombre)
+    - [Juan](nombre)
+    - [Mario](nombre)
+    - [vicent](nombre)
+    - a nombre de [Pablo](nombre)
+    - a nombre de [Mario](nombre)
+    - a nombre de [Juan](nombre)
+    - me llamo [Mario](nombre)
+    - me llamo [vicent](nombre)
+    - me llamo [Raul](nombre)
+    - mi nombre es [vicent](nombre)
+    - para [nacho](nombre)
+    - para [Raul](nombre)
+    - para [vicent](nombre)
+    - yo soy [Raul](nombre)
+    - [Mercedes](nombre)
+    - a nombre de [Eva](nombre)
+    - me llamo [Nicolas](nombre)
+    - mi nombre es [Irene](nombre)
+    - para [Alfons](nombre)
+    - yo soy [Guadalupe](nombre)
+    - [Patricia](nombre)
+    - a nombre de [Carmen](nombre)
+    - me llamo [Celia](nombre)
+    - mi nombre es [Manolo](nombre)
+    - para [Juan](nombre)
+    - yo soy [Nieves](nombre)
+    - [Luis](nombre)
+    - a nombre de [Fatima](nombre)
+    - me llamo [Laura](nombre)
+    - mi nombre es [Estefania](nombre)
+    - para [Violeta](nombre)
+    - yo soy [Ismael](nombre)
+    - [Sandra](nombre)
+    - a nombre de [Guillermo](nombre)
+    - me llamo [Dario](nombre)
+    - mi nombre es [Miguel](nombre)
+    - para [Daniel](nombre)
+    - yo soy [Andrea](nombre)
+    - [Nuria](nombre)
+    - a nombre de [Santiago](nombre)
+    - me llamo [Consuelo](nombre)
+    - mi nombre es [Maria Jose](nombre)
+    - para [Gloria](nombre)
+    - yo soy [Ximo](nombre)
+    - [Paco](nombre)
+    - [Anastasio](nombre)
+    - [Josefina](nombre)
+    - [Andreu](nombre)
+- intent: lista_burgers
+  examples: |
+    - carta
+    - cuéntame el menu
+    - dime las hamburguesas
+    - lista
+    - lista de burgers
+    - lista de hamburguesas
+    - menu
+    - quiero ver la carta
+    - ¿qué hamburguesas hay?
+- intent: no
+  examples: |
+    - creo que no
+    - la verdad es que no
+    - me temo que no
+    - nanay
+    - no
+    - no esta bien
+    - no me gusta
+    - nop
+    - not really
+    - nunca
+    - no lo soy
+- intent: pedido
+  examples: |
+    - haz un pedido
+    - pedido
+    - quiero hacer un pedido
+    - quiero una hamburguesa
+    - realizar un pedido
+    - reserva
+    - ya se que quiero
+    - me gustaria realizar un pedido
+    - quiero pedirla
+- intent: pregunta_burgers_con_ingrediente
+  examples: |
+    - burgers de [ternera](ingrediente)
+    - hamburguesas con carne de [angus](ingrediente)
+    - cual es la hamburguesa que lleva [donuts](ingrediente)
+    - dime hamburgesas con [queso cheddar](ingrediente)
+    - dime hamburgesas con [tomate](ingrediente)
+    - dime hamburgesas que lleven [queso de cabra](ingrediente)
+    - dime hamburgesas que lleven [lechuga](ingrediente)
+    - enseñame las de [pollo](ingrediente)
+    - ¿alguna burger lleva [foie](ingrediente)?
+    - ¿qué hamburguesas llevan [rúcula](ingrediente)?
+    - me encanta el [guacamole](ingrediente)
+    - mi ingrediente favorito es el [bacon](ingrediente)
+- intent: pregunta_ingredientes_de_burger
+  examples: |
+    - dime los ingredientes de la [africana](burger)
+    - ingredientes de la [jalapeña](burger)
+    - que lleva la [baby](burger)
+    - que lleva la burger que se llama [heavy](burger)
+    - ¿lleva mucha cosa la hamburguesa [country](burger)?
+- intent: recomienda_burger
+  examples: |
+    - dame ideas
+    - dime alguna hamburguesa
+    - recomienda
+    - recomienda una hamburguesa
+    - recomiendame una burger
+    - recomiéndame algo
+    - sugiere algo
+    - ¿ideas?
+    - ¿sugerencias?
+    - recomiendame una
+- intent: saludo_y_ayuda
+  examples: |
+    - /start
+    - ayuda
+    - buenas
+    - buenas noches
+    - buenas tardes
+    - buenos dias
+    - como funciona
+    - como va esto
+    - hello
+    - hey
+    - hi
+    - hola
+    - vamos
+- intent: si
+  examples: |
+    - claro
+    - correcto
+    - exactamente
+    - exacto
+    - of course
+    - perfecto
+    - por supuesto
+    - si
+    - sip
+    - suena bien
+    - vale
+    - y
+    - yeah
+    - yes

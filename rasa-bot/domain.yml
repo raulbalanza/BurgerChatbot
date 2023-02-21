@@ -1,0 +1,99 @@
+version: '3.1'
+intents:
+- burger_dia
+- burgers_baratas
+- burgers_caras
+- decir_burger
+- decir_nombre
+- despedida
+- lista_burgers
+- no
+- pedido
+- pregunta_burgers_con_ingrediente
+- pregunta_ingredientes_de_burger
+- recomienda_burger
+- saludo_y_ayuda
+- si
+entities:
+- nombre
+- burger
+- ingrediente
+slots:
+  burger:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: burger
+      conditions:
+      - active_loop: pedido_form
+  nombre:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: nombre
+      conditions:
+      - active_loop: pedido_form
+forms:
+  pedido_form:
+    required_slots:
+    - burger
+    - nombre
+actions:
+- action_almacenar_pedido
+- action_burger_dia
+- action_burgers_baratas
+- action_burgers_caras
+- action_burgers_con_ingrediente
+- action_ingredientes_de_burger
+- action_recomienda_crispyvegana
+- action_recomienda_donuts_burger
+- action_recomienda_lotus
+- action_recomienda_muralla
+- utter_ask_burger
+- utter_ask_nombre
+- utter_despedirse
+- utter_lista_burgers
+- utter_no_entiendo
+- utter_pregunta_dulce
+- utter_pregunta_lotus
+- utter_pregunta_vegana
+- utter_saludo_y_ayuda
+responses:
+  utter_saludo_y_ayuda:
+  - text: |2-
+       ¡Hola! Me llamo Muro y voy a ayudarte a elegir tu próxima hamburguesa favorita. Puedes pedirme:
+       - Ver la carta de hamburguesas
+       - ¡Que te recomiende alguna!
+       - Preguntar por la hamburguesa del día
+       - Preguntar por las hamburguesas más baratas o caras
+       - Preguntar por los ingredientes de una hamburguesa
+       - Preguntar por hamburguesas que lleven tu ingrediente favorito
+       - Realizar un pedido
+       
+       ¿Cómo puedo ayudarte? :)
+  utter_despedirse:
+  - text: Muchas gracias por comer con nosotros, ¡que aproveche!
+  utter_pregunta_vegana:
+  - text: Antes que nada, ¿eres vegano/a?
+  utter_pregunta_lotus:
+  - text: De acuerdo, ¿te gustan las galletas lotus?
+  utter_pregunta_dulce:
+  - text: Mmmm, ¿y te atreverías a probar algo dulce?
+  utter_lista_burgers:
+  - text: 'Puedes ver la lista de hamburguesas en el siguiente enlace: https://hamburgueserialamuralla.com/menu/'
+  - text: 'En esta web puedes ver nuestra carta: https://hamburgueserialamuralla.com/menu/'
+  utter_ask_burger:
+  - text: ¿Qué hamburguesa quieres?
+  - text: ¿Qué hamburguesa te apetece?
+  - text: ¿Qué hamburguesa te ha conquistado?
+  utter_ask_nombre:
+  - text: ¿A nombre de quién hago el pedido?
+  - text: Dime un nombre para el pedido
+  utter_no_entiendo:
+  - text: Lo siento, no te he entendido. ¿Puedes intentar decírmelo de otra forma?
+  - text: Lo siento, no te estoy entendiendo. ¿Puedes volver a intentarlo reformulando la frase?
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false

@@ -1,0 +1,66 @@
+version: "3.1"
+
+rules:
+
+- rule: Saludar y mostrar una ayuda
+  steps:
+  - intent: saludo_y_ayuda
+  - action: utter_saludo_y_ayuda
+
+- rule: Agradecer y despedirse
+  steps:
+  - intent: despedida
+  - action: utter_despedirse
+  - action: action_restart
+
+- rule: Mostrar la hamburguesa del día
+  steps:
+  - intent: burger_dia
+  - action: action_burger_dia
+
+- rule: Mostrar las hamburguesas más caras
+  steps:
+  - intent: burgers_caras
+  - action: action_burgers_caras
+
+- rule: Mostrar las hamburguesas más baratas
+  steps:
+  - intent: burgers_baratas
+  - action: action_burgers_baratas
+
+- rule: Mostrar hamburguesas con el ingrediente solicitado
+  steps:
+  - intent: pregunta_burgers_con_ingrediente
+  - action: action_burgers_con_ingrediente
+
+- rule: Mostrar los ingredientes de la hamburguesa solicitada
+  steps:
+  - intent: pregunta_ingredientes_de_burger
+  - action: action_ingredientes_de_burger
+
+- rule: Mostrar la lista de hamburguesas
+  steps:
+  - intent: lista_burgers
+  - action: utter_lista_burgers
+
+- rule: Activar formulario del pedido
+  steps:
+  - intent: pedido
+  - action: pedido_form
+  - active_loop: pedido_form
+
+- rule: Entregar formulario del pedido
+  condition:
+  - active_loop: pedido_form
+  steps:
+  - action: pedido_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_almacenar_pedido
+  - action: action_restart
+
+- rule: Pedir al usuario que reformule cada vez que envíe un mensaje con poca confianza de NLU
+  steps:
+  - intent: nlu_fallback
+  - action: utter_no_entiendo

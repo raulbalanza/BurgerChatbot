@@ -1,0 +1,12 @@
+.app-header {
+    height: 60px;
+    line-height: 60px;
+    border-bottom: thin lightgrey solid;
+    font-size: xx-large;
+    font-family: sans-serif;
+}
+
+.dash-table-container .dash-spreadsheet-container {
+    display: table-cell!important;
+    height: 100% !important;
+}
